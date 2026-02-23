@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智学向导 - 学情诊断与规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#F0F5FF',
+                100: '#E1EAFF',
+                200: '#C4D6FF',
+                500: '#3370FF', // Lark Blue
+                600: '#295CD1',
+                700: '#1F44A3',
+                900: '#0C1C45',
+              },
+              gray: {
+                50: '#F5F6F7', // Page bg
+                100: '#EBEDF0', // Hover bg
+                200: '#DEE0E3', // Borders
+                300: '#C9CDD4',
+                400: '#9CA2A8',
+                500: '#646A73', // Secondary text
+                600: '#4E5969',
+                700: '#1F2329', // Primary text
+                800: '#171A1F',
+                900: '#000000',
+              },
+              success: {
+                50: '#E6F8EF',
+                500: '#00B365',
+              },
+              warning: {
+                50: '#FFF5E5',
+                500: '#FF8800',
+              },
+              danger: {
+                50: '#FFECEC',
+                500: '#F54A45',
+              },
+            },
+            boxShadow: {
+              'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.02)',
+              'sm': '0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px 0 rgba(0, 0, 0, 0.01)',
+              'card': '0 2px 12px 0 rgba(0, 0, 0, 0.04)',
+              'hover': '0 12px 32px 0 rgba(0, 0, 0, 0.08)',
+              'active': '0 2px 8px 0 rgba(0, 0, 0, 0.04) inset',
+            },
+            borderRadius: {
+              'xl': '12px',
+              '2xl': '16px',
+              '3xl': '24px',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-up-fade': 'slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUpFade: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scaleIn: {
+                '0%': { opacity: '0', transform: 'scale(0.96)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: #F5F6F7;
+        color: #1F2329;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D0D3D9; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #B4B8BF; 
+      }
+      
+      .transition-height {
+        transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      
+      /* Animation Delays for Staggering */
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-400 { animation-delay: 400ms; }
+
+      /* react-easy-crop styling overrides */
+      .react-easy-crop_Container {
+        border-radius: 24px;
+      }
+    </style>
+    <!-- PDF Generation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react-easy-crop": "https://esm.sh/react-easy-crop@5.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "智学向导 (Smart Study Guide)",
+  "description": "一个智能化的学情诊断应用，利用 AI 分析初高中学生的知识掌握情况，生成可视化图表并定制专属学习计划。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
