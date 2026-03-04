@@ -6,6 +6,8 @@ import AnalysisReport from './components/AnalysisReport';
 import StudyPlanner from './components/StudyPlanner';
 import { ViewState, DiagnosticReport, StudyPlan, Subject, TextbookVersion } from './types';
 import { createStudyPlan } from './services/geminiService';
+import { motion, AnimatePresence } from 'motion/react';
+import { Home, Stethoscope, BarChart3 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>(ViewState.DASHBOARD);
@@ -87,17 +89,35 @@ const App: React.FC = () => {
       
       {/* Main Content Area */}
       <main className="flex-1 md:ml-72 h-screen overflow-y-auto overflow-x-hidden transition-all duration-300 print:ml-0 print:w-full print:h-auto print:overflow-visible">
-        {/* Animated Wrapper for View Switching */}
-        <div key={currentView} className="animate-slide-up-fade h-full">
-           {renderContent()}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={currentView}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="h-full"
+          >
+             {renderContent()}
+          </motion.div>
+        </AnimatePresence>
       </main>
       
       {/* Mobile Navbar Placeholder */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 flex justify-around shadow-lg z-50 print:hidden">
-        <button onClick={() => setCurrentView(ViewState.DASHBOARD)} className="p-2 rounded-lg text-gray-600 hover:bg-gray-50">🏠</button>
-        <button onClick={() => setCurrentView(ViewState.DIAGNOSTIC)} className="p-2 rounded-lg text-gray-600 hover:bg-gray-50">🩺</button>
-        <button disabled={!report} onClick={() => setCurrentView(ViewState.REPORT)} className={`p-2 rounded-lg ${!report ? 'text-gray-300' : 'text-gray-600 hover:bg-gray-50'}`}>📊</button>
+        <button onClick={() => setCurrentView(ViewState.DASHBOARD)} className="p-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          <Home size={24} />
+        </button>
+        <button onClick={() => setCurrentView(ViewState.DIAGNOSTIC)} className="p-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          <Stethoscope size={24} />
+        </button>
+        <button 
+          disabled={!report} 
+          onClick={() => setCurrentView(ViewState.REPORT)} 
+          className={`p-2 rounded-lg ${!report ? 'text-gray-300' : 'text-gray-600 hover:bg-gray-50'}`}
+        >
+          <BarChart3 size={24} />
+        </button>
       </div>
     </div>
   );

@@ -2,10 +2,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Subject, GradeLevel, TextbookVersion, Question, DiagnosticReport, StudyPlan, Answer } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// Complex academic reasoning and test paper analysis benefit from gemini-3-pro-preview
-const MODEL_NAME = "gemini-3-pro-preview";
+// Complex academic reasoning and test paper analysis benefit from gemini-3.1-pro-preview
+const MODEL_NAME = "gemini-3.1-pro-preview";
 
 // --- Schemas ---
 
